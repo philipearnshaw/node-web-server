@@ -49,6 +49,11 @@ app.get('/about', (requ, resp) => {
 app.get('/bad', (requ, resp) => {
 	resp.send({errorMessage: 'bad request'});
 });
+
+app.get('/projects', (requ, resp) => {
+	resp.render('projects.hbs');
+});
+
 app.listen(port, () => {
 	console.log(`Server is up on port ${port}`);
 });  // Binds to 3000 and will never stop and has to be ctrl-c
