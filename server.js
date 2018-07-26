@@ -2,6 +2,7 @@ const express = require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
+const port = process.env.PORT || 3000;
 var app = express();
 
 hbs.registerPartials(__dirname + "/views/partials");
@@ -21,9 +22,9 @@ app.use((requ, resp, next) => {
 	next();
 });
 
-app.use((requ, resp, next) => {
-	resp.render('maintenance.hbs');
-});
+//app.use((requ, resp, next) => {
+//	resp.render('maintenance.hbs');
+//});
 
 app.use(express.static(__dirname + '/public'));
 
@@ -32,14 +33,6 @@ hbs.registerHelper('getCurrentYear', () => new Date().getFullYear());
 hbs.registerHelper('screamIt', (text) => text.toUpperCase());
 
 app.get('/', (requ, resp) => {  // root route handler
-//	resp.send('<h1>Hello Express!</h1>');
-//	resp.send({
-//		name: 'Fred',
-//		likes: [
-//			'running',
-//			'chasing'
-//		]
-//	});
 	resp.render('home.hbs', {
 		pageTitle: 'Home Page',
 		welcomeMessage: 'Welcome to the server page'
@@ -56,6 +49,6 @@ app.get('/about', (requ, resp) => {
 app.get('/bad', (requ, resp) => {
 	resp.send({errorMessage: 'bad request'});
 });
-app.listen(3000, () => {
-	console.log("Server is up on port 3000");
+app.listen(port, () => {
+	console.log(`Server is up on port ${port}`);
 });  // Binds to 3000 and will never stop and has to be ctrl-c
