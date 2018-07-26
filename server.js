@@ -51,7 +51,9 @@ app.get('/bad', (requ, resp) => {
 });
 
 app.get('/projects', (requ, resp) => {
-	resp.render('projects.hbs');
+	resp.render('projects.hbs', {
+		pageTitle: 'Projects'
+	});
 });
 
 app.listen(port, () => {
