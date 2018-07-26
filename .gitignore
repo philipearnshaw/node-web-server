@@ -1,0 +1,8 @@
+node_modules/
+.jshintrc
+.project
+.settings/
+.sublime-project
+.tern-project
+package-lock.json
+*.log
